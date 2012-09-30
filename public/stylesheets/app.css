@@ -1,0 +1,27 @@
+#header{
+  margin-top:20px;
+  text-align:center;
+}
+
+form{
+  display: none;
+  padding-top:30px;
+}
+
+#story-stage {
+  display: none;
+  margin-top:30px;
+}
+
+.row{
+  background-color:rgba(90, 100, 110, 0.05)
+}
+
+body{
+  /*background-image: url(../images/office.png);*/
+  min-height: 800px;
+}
+
+#forms{
+  min-height: 600px;
+}

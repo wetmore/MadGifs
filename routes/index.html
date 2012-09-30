@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width" />
+
+<title>MadGifs</title>
+
+<!-- Included CSS Files (Uncompressed) -->
+<!--
+            <link rel="stylesheet" href="stylesheets/foundation.css">
+  -->
+
+<!-- Included CSS Files (Compressed) -->
+<link rel="stylesheet" href="stylesheets/foundation.min.css">
+<link rel="stylesheet" href="stylesheets/app.css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="javascripts/modernizr.foundation.js"></script>
+<script src="javascripts/gifs.js"></script>
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+                            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                              <![endif]-->
+
+</head>
+<body>
+<div class = "container">
+  <div class="row">
+    <div class="six columns offset-by-three">
+      <div class="panel radius" id = "header">
+        <h4>Welcome to MadGifs.</h4>
+        <p class="subheader">Make terrible mad libs out of tumblr gifs.</p>
+        <h5 style="text-align:center">Pick a story to get started.</h5> 
+      </div>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="three columns offset-by-one">
+      <button class="button radius" id="story1button">Story Number 1</button>
+    </div>
+    <div class="three columns offset-by-one">
+      <button class="button radius" id="story2button">Story Number 2</button>
+    </div>
+    <div class="three columns offset-by-one">
+      <button class="button radius" id="story3button">Story Number 3</button>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="ten columns offset-by-one panel" id="story-stage">
+    </div>
+  </div>
+  <div class="row">
+      
+    <div class="six columns offset-by-three" id = "forms">
+      <form id="story1">
+        <div class = "panel">
+          <label>Celebrity</label>
+          <input type="text" placeholder="Celebrity" id="celeb1"/> 
+          <label>Verb ending in -ing</label>
+          <input type="text" placeholder="Verb" id="verb1"/> 
+          <label>Verb ending in -ed</label>
+          <input type="text" placeholder="Verb" id="verb2"/> 
+          <label>Another Celebrity</label>
+          <input type="text" placeholder="Another Celebrity" id="celeb2"/> 
+          <label>Adjective</label>
+          <input type="text" placeholder="Adjective" id="adj1"/> 
+          <label>Future tense verb (like "run")</label>
+          <input type="text" placeholder="Verb" id="verb3"/> 
+          <input type="submit" class="small button" value="Submit">
+        </div>
+      </form>
+      <form id="story2">
+        <div class = "panel">
+          <label>Adjective</label>
+          <input type="text" placeholder="Adjective" id="adj1"/> 
+          <label>Weather Adjective</label>
+          <input type="text" placeholder="Adjective" id="adj2"/> 
+          <label>Time of Day</label>
+          <input type="text" placeholder="Time of Day" id="time1"/> 
+          <label>Politician</label>
+          <input type="text" placeholder="Politician" id="pol1"/> 
+          <label>Present-tense verb</label>
+          <input type="text" placeholder="Verb" id="verb1"/> 
+          <label>Exclamation</label>
+          <input type="text" placeholder="Exclamation" id="exclamation1"/> 
+          <label>Noun</label>
+          <input type="text" placeholder="Noun" id="noun1"/> 
+          <label>Place</label>
+          <input type="text" placeholder="Place" id="place1"/> 
+          <label>Politician</label>
+          <input type="text" placeholder="Politician" id="pol2"/> 
+          <label>Verb</label>
+          <input type="text" placeholder="Verb" id="verb2"/> 
+          <label>Noun</label>
+          <input type="text" placeholder="Noun" id="noun2"/> 
+          <label>Type of Building</label>
+          <input type="text" placeholder="Type of Building" id="building1"/> 
+          <input type="submit" class="small button" value="Submit">
+        </div>
+      </form>
+      <form id="story3">
+        <div class = "panel">
+          <label>Rapper</label>
+          <input type="text" placeholder="Rapper"  id="rapper1"/> 
+          <label>Plural Noun</label>
+          <input type="text" placeholder="Plural Noun" id="noun1"/> 
+          <label>Slang Exclamation</label>
+          <input type="text" placeholder="Slang Exclamation" id="slang1"/> 
+          <label>Position of Authority</label>
+          <input type="text" placeholder="Position of Authority" id="position1"/> 
+          <label>Same Rapper</label>
+          <input type="text" placeholder="Same Rapper" id="rapper2"/> 
+          <label>Plural Noun</label>
+          <input type="text" placeholder="Plural Noun" id="noun2"/> 
+          <label>City</label>
+            <input type="text" placeholder="City" id="city1"/> 
+            <label>Year</label>
+            <input type="text" placeholder="Year" id="year1"/> 
+            <label>Adjective</label>
+            <input type="text" placeholder="Adjective" id="adj1"/>
+            <label>Verb</label>
+            <input type="text" placeholder="Verb" id="verb1"/> 
+            <label>Year</label>
+            <input type="text" placeholder="Year" id="year2"/>  
+            <label>Color</label>
+            <input type="text" placeholder="Color" id="color1"/>  
+            <input type="submit" class="small button" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+$('#story1button').click(function() {
+  $('#story2').hide('fast', function(){
+
+  });
+  $('#story3').hide('fast', function(){
+
+  });
+  $('#story1').toggle('slow', function() {
+    // Animation complete.
+  });
+
+});
+$('#story2button').click(function() {
+  $('#story1').hide('fast', function(){
+
+  });
+  $('#story3').hide('fast', function(){
+
+  });
+  $('#story2').toggle('slow', function() {
+    // Animation complete.
+  });
+
+});
+$('#story3button').click(function() {
+  $('#story2').hide('fast', function(){
+
+  });
+  $('#story1').hide('fast', function(){
+
+  });
+  $('#story3').toggle('slow', function() {
+    // Animation complete.
+  });
+
+});
+  </script>
+
+  <!-- templates for stories lol -->
+
+  <script id="story1template"type="text/template">
+    Once, <%=celeb1%> was <%=verb1%>.
+
+    They <%=verb2%> into <%=celeb2%>.
+
+    It was really <%=adj1%>.
+
+    They decided to never <%=verb3%> again.
+  </script>
+
+  <script id="story2template"type="text/template">
+    It was a <%=adj1%> and <%=adj2%> <%=time1%>. <%=pol1%> stepped out of his helicopter and looked around Washington DC. The winds of change were <%=verb1%>. "<%=exclamation1%>", he muttered to his aide. "This election will really decide who the best <%=noun1%> in the <%=place1%> is. If <%=pol2%> loses this debate, our plot to <%=verb2%> the <%=noun2%> is ruined." 
+
+    As he walked into his <%=building1%>, the helicopter flew off into the distance.
+  </script>
+
+  <script id="story3template"type="text/template">
+<%=rapper1%> looked out across his garage of exotic <%=noun1%>. "<%=slang1%>" he exclaimed. "It's good to be <%=position1%>." <%=rapper2%> walked into his studio and looked around. Platinum <%=noun2%> hung on the walls, memories of his past. "Straight outta <%=city1%>", the classic from <%=year1%>. "Get <%=adj1%> or <%=verb1%> tryin'", his seminal hit from <%=year2%>. With any luck, his next single "<%=color1%> Swag" would be just as popular.
+  </script>
+
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+
+  <script src="javascripts/jquery.js"></script>
+
+    <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+
+      <script src="javascripts/jquery.foundation.forms.js"></script>
+
+        <script src="javascripts/jquery.foundation.reveal.js"></script>
+
+          <script src="javascripts/jquery.foundation.orbit.js"></script>
+
+            <script src="javascripts/jquery.foundation.navigation.js"></script>
+
+              <script src="javascripts/jquery.foundation.buttons.js"></script>
+
+                <script src="javascripts/jquery.foundation.tabs.js"></script>
+
+                  <script src="javascripts/jquery.foundation.tooltips.js"></script>
+
+                    <script src="javascripts/jquery.foundation.accordion.js"></script>
+
+                      <script src="javascripts/jquery.placeholder.js"></script>
+
+                        <script src="javascripts/jquery.foundation.alerts.js"></script>
+
+                          <script src="javascripts/jquery.foundation.topbar.js"></script>
+
+                            -->
+
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  </body>
+  </html>
