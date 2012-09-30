@@ -83,7 +83,7 @@ $(function() {
     var numSearches = 10;
     var wordLabel = $(this).attr('id');
     console.log($(this));
-    currentWords[wordLabel] = '<b>'+$(this).val()+'</b>';
+    currentWords[wordLabel] = '<span class="keyword">'+$(this).val()+'</span>';
 
     // gif loading
     if($(this).val() !== '') {
@@ -96,7 +96,7 @@ $(function() {
           console.log('retrieved gif');
           var gif = _.first(_.shuffle(g));
           if (gif) {
-            currentWords[wordLabel] += '<span class="keyword"><img src="'+gif+'"></span>';
+            currentWords[wordLabel] += '<br><img src="'+gif+'"><br>';
           }
         }
       });
