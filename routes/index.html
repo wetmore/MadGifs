@@ -11,7 +11,7 @@
 <!-- Set the viewport width to device width for mobile -->
 <meta name="viewport" content="width=device-width" />
 
-<title>MadGifs</title>
+<title>madgifs</title>
 
 <!-- Included CSS Files (Uncompressed) -->
 <!--
@@ -37,23 +37,19 @@
   <div class="row">
     <div class="six columns offset-by-three">
       <div class="panel radius" id = "header">
-        <h4>Welcome to MadGifs.</h4>
-        <p class="subheader">Make terrible mad libs out of tumblr gifs.</p>
-        <h5 style="text-align:center">Pick a story to get started.</h5> 
+        <h3>welcome to madgifs.</h3>
+        <p class="subheader">make terrible mad libs out of tumblr gifs.</p>
+        <h5 style="text-align:center">pick a story to get started.</h5> 
       </div>
       <hr />
     </div>
   </div>
 
   <div class="row">
-    <div class="three columns offset-by-one">
-      <button class="button radius" id="story1button">Story Number 1</button>
-    </div>
-    <div class="three columns offset-by-one">
-      <button class="button radius" id="story2button">Story Number 2</button>
-    </div>
-    <div class="three columns offset-by-one">
-      <button class="button radius" id="story3button">Story Number 3</button>
+    <div class="six columns offset-by-three">
+      <button class="button small radius" id="story1button">Story Number 1</button>
+      <button class="button small radius" id="story2button" style="margin-left:50px">Story Number 2</button>
+      <button class="button small radius" id="story3button" style="float:right">Story Number 3</button>
     </div>
   </div>
 
@@ -67,7 +63,7 @@
     <div class="six columns offset-by-three" id = "forms">
       <form id="story1">
         <div class = "panel">
-          <label>Celebrity</label>
+          <label>Male Celebrity</label>
           <input type="text" placeholder="Celebrity" id="celeb1"/> 
           <label>Verb ending in -ing</label>
           <input type="text" placeholder="Verb" id="verb1"/> 
@@ -187,11 +183,11 @@ $('#story3button').click(function() {
   <script id="story1template"type="text/template">
     Once, <%=celeb1%> was <%=verb1%>.
 
-    They <%=verb2%> into <%=celeb2%>.
+    He <%=verb2%> into <%=celeb2%>.
 
     It was really <%=adj1%>.
 
-    They decided to never <%=verb3%> again.
+    He decided to never <%=verb3%> again.
   </script>
 
   <script id="story2template"type="text/template">

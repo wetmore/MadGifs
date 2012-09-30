@@ -14,14 +14,15 @@ form{
 }
 
 .row{
-  background-color:rgba(90, 100, 110, 0.05)
+  /*background-color:rgba(90, 100, 110, 0.8)*/
 }
 
 body{
-  /*background-image: url(../images/office.png);*/
+  background-image: url(shattered.png);
   min-height: 800px;
 }
 
 #forms{
   min-height: 600px;
 }
+
