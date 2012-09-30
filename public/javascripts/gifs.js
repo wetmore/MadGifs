@@ -1,7 +1,7 @@
 $(function() {
   var state = 0;
   var currentWords = {};
-  var currentGifs = {};
+  var lastStateChange = -1;
 
   // compile templates
   var templates = [];
@@ -11,10 +11,12 @@ $(function() {
 
   function changeState(n) {
     state = n;
+    lastStateChange = Date.now();
     currentWords = {};
     currentGifs = {};
     //$('input[type=text]').on('keypress', loadImagesD);
     $('input[type=text]').val('');
+    $('input[type=text]').off('focusout', loadImages);
     $('input[type=text]').focusout(loadImages);
     $('#story-stage').hide('fast', function() {});
     $('form').bind('submit', function(e) {
@@ -28,6 +30,7 @@ $(function() {
 
   function getGifs(term, numSearches) {
     var gifs = [];
+    var timeWhenStarted = Date.now();
     var photos = [];
     var key = 'bDgcIYQa72rDkhLjhe2jhqyH2kky2ov5Wd0PHeNwPZKGS6hQ4H';
     var deferred = $.Deferred();
@@ -59,7 +62,7 @@ $(function() {
           if (!gifs.length) {
             gifs = photos;
           }
-          deferred.resolve(gifs);
+          deferred.resolve(gifs, timeWhenStarted);
           return;
         }
         helper(term, endTime, iterations + 1);
@@ -80,18 +83,23 @@ $(function() {
     var numSearches = 10;
     var wordLabel = $(this).attr('id');
     console.log($(this));
-    currentWords[wordLabel] = $(this).val();
+    currentWords[wordLabel] = '<b>'+$(this).val()+'</b>';
 
-    // add gif loading here
-    //
-    var term = encodeURI($(this).val());
-    var gifs = getGifs(term, numSearches);
-    gifs.done(function(g) {
-      console.log('done');
-      var gif = _.first(_.shuffle(g));
-      if (gif) {
-        currentWords[wordLabel] += '<br><img src="'+gif+'"><br>';
-      }
-    });
+    // gif loading
+    if($(this).val() !== '') {
+      var term = encodeURI($(this).val());
+      var gifs = getGifs(term, numSearches);
+      gifs.done(function(g, t) {
+        if (t < lastStateChange) {
+          console.log('expired gif search return. data unused');
+        } else {
+          console.log('retrieved gif');
+          var gif = _.first(_.shuffle(g));
+          if (gif) {
+            currentWords[wordLabel] += '<span class="keyword"><img src="'+gif+'"></span>';
+          }
+        }
+      });
+    }
   };
 });
