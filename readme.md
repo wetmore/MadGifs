@@ -1,1 +1,1 @@
-MadGifs!
+http://madgifs.jit.su/
